@@ -446,6 +446,10 @@ namespace Hi3Helper.Sophon.Helper
         {
             // Concat the string
             string url = currentSophonChunkInfo.ChunksBaseUrl?.TrimEnd('/') + '/' + chunkName;
+            if (!string.IsNullOrEmpty(currentSophonChunkInfo.UrlSuffix))
+            {
+                url += '?' + currentSophonChunkInfo.UrlSuffix.TrimStart('?');
+            }
 
             bool isDispose = false;
             HttpResponseMessage httpResponseMessage = null;
@@ -506,7 +510,7 @@ namespace Hi3Helper.Sophon.Helper
 
             Directory.CreateDirectory(localLowDir);
 
-            string metadataFilename = Path.GetFileName(manifestInfo.ManifestFileUrl ?? "");
+            string metadataFilename = Path.GetFileName(manifestInfo.ManifestId ?? manifestInfo.ManifestFileUrl ?? "");
             string cachedFilepath   = Path.Combine(localLowDir, metadataFilename);
             localMetadataPath = cachedFilepath;
 

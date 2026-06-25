@@ -13,6 +13,7 @@ namespace Hi3Helper.Sophon.Infos
     public class SophonChunksInfo : SophonIdentifiableProperty, IEquatable<SophonChunksInfo>
     {
         public string? ChunksBaseUrl       { get; set; }
+        public string? UrlSuffix           { get; set; }
         public int     ChunksCount         { get; set; }
         public int     FilesCount          { get; set; }
         public long    TotalSize           { get; set; }
@@ -98,11 +99,13 @@ namespace Hi3Helper.Sophon
                                                           long    totalCompressedSize,
                                                           string? matchingField,
                                                           int     categoryId,
-                                                          string? categoryName)
+                                                          string? categoryName,
+                                                          string? urlSuffix = null)
         {
             return new SophonChunksInfo
             {
                 ChunksBaseUrl       = chunksBaseUrl,
+                UrlSuffix           = urlSuffix,
                 ChunksCount         = chunksCount,
                 FilesCount          = filesCount,
                 IsUseCompression    = isUseCompression,

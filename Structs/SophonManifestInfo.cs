@@ -17,7 +17,16 @@ namespace Hi3Helper.Sophon.Infos
         public long    ManifestSize           { get; set; }
         public long    ManifestCompressedSize { get; set; }
 
-        public string? ManifestFileUrl => ManifestBaseUrl?.TrimEnd('/') + '/' + ManifestId;
+        public string? UrlSuffix              { get; set; }
+
+        public string? ManifestFileUrl
+        {
+            get
+            {
+                string url = ManifestBaseUrl?.TrimEnd('/') + '/' + ManifestId;
+                return string.IsNullOrEmpty(UrlSuffix) ? url : url + '?' + UrlSuffix.TrimStart('?');
+            }
+        }
     }
 }
 
@@ -68,7 +77,8 @@ namespace Hi3Helper.Sophon
                                                             long    manifestCompressedSize,
                                                             string? matchingField,
                                                             int     categoryId,
-                                                            string? categoryName)
+                                                            string? categoryName,
+                                                            string? urlSuffix = null)
             => new()
             {
                 ManifestBaseUrl        = manifestBaseUrl,
@@ -79,7 +89,8 @@ namespace Hi3Helper.Sophon
                 ManifestCompressedSize = manifestCompressedSize,
                 MatchingField          = matchingField,
                 CategoryId             = categoryId,
-                CategoryName           = categoryName
+                CategoryName           = categoryName,
+                UrlSuffix              = urlSuffix
             };
     }
 }
