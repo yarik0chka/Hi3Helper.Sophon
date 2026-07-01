@@ -117,7 +117,8 @@ namespace Hi3Helper.Sophon
                                                   sophonManifestIdentity.ChunkInfo.CompressedSize,
                                                   sophonManifestIdentity.MatchingField,
                                                   sophonManifestIdentity.CategoryId,
-                                                  sophonManifestIdentity.CategoryName),
+                                                  sophonManifestIdentity.CategoryName,
+                                                  sophonManifestIdentity.ChunksUrlInfo.UrlSuffix),
                     ManifestInfo = CreateManifestInfo(sophonManifestIdentity.ManifestUrlInfo.UrlPrefix,
                                                       sophonManifestIdentity.ManifestFileInfo.Checksum,
                                                       sophonManifestIdentity.ManifestFileInfo.FileName,
@@ -126,7 +127,8 @@ namespace Hi3Helper.Sophon
                                                       sophonManifestIdentity.ManifestFileInfo.CompressedSize,
                                                       sophonManifestIdentity.MatchingField,
                                                       sophonManifestIdentity.CategoryId,
-                                                      sophonManifestIdentity.CategoryName),
+                                                      sophonManifestIdentity.CategoryName,
+                                                      sophonManifestIdentity.ManifestUrlInfo.UrlSuffix),
                     OtherSophonBuildData = sophonBranch.Data,
                     MatchingField        = sophonManifestIdentity.MatchingField,
                     CategoryName         = sophonManifestIdentity.CategoryName,
@@ -137,7 +139,7 @@ namespace Hi3Helper.Sophon
             if (isThrowIfNotFound)
                 throw new KeyNotFoundException($"Sophon manifest with matching field: {matchingField} is not found!");
 
-            return new SophonChunkManifestInfoPair
+            return new SophonChunkManifesnfoPair
             {
                 IsFound       = false,
                 ReturnCode    = 404,
@@ -148,4 +150,4 @@ namespace Hi3Helper.Sophon
             };
         }
     }
-}
+}tI
